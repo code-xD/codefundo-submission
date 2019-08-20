@@ -37,7 +37,7 @@ class CacheVoterData(models.Model):
     voter_name = models.CharField(max_length=200)
     age = models.IntegerField()
     gender = models.IntegerField()
-    aadhar_no = models.IntegerField(primary_key=True, unique=True)
+    aadhar_no = models.BigIntegerField(primary_key=True, unique=True)
     aLine1 = models.CharField(max_length=500)
     aLine2 = models.CharField(max_length=500)
     s_code = models.IntegerField()
