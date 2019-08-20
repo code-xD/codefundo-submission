@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!&*ss52#5v_9kwlzda5xo)*(jasofoukse9dnpmzmqn-^vn1$e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'evoterid.azurewebsites.net', 'evoterid.herokuapp.com']
 
@@ -123,7 +123,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-SITE_URL = 'https://evoterid.azurewebsites.net'
+SITE_URL = 'http://evoterid.azurewebsites.net'
 SENDGRID_API_KEY = "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"
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False
