@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<!--
+	Lens by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+{% load static %}
+<html>
+	<head>
+		<title>Human Verification Form</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static "evoterform/css/main.css" %}" />
+		<noscript><link rel="stylesheet" href="{% static "evoterform/css/noscript.css" %}" /></noscript>
+	</head>
+	<body class="is-preload-0 is-preload-1 is-preload-2">
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>Verification Portal</h1>
+						<p>Voter Name - {{voterdata.voter_name}}</p>
+						<p>Voter Age - {{voterdata.age}}</p>
+						<p>Gender - {{voterdata.gender}}</p>
+						<p>Aadhar No - {{voterdata.aadhar_no}}</p>
+						<p>Address(L1) - {{voterdata.aLine1}}</p>
+						<p>Address(L2) - {{voterdata.aLine2}}</p>
+						<p>State Code - {{voterdata.s_code}}</p>
+						<p>City Code - {{voterdata.c_code}}</p>
+						<p>District Code - {{voterdata.d_code}}</p>
+						<p>Pincode - {{voterdata.pin}}</p>
+						<form method="POST">
+							{%csrf_token%}
+							<button name="verified" type="submit">Verfied</button>
+							<button name="failed" type="submit">Fail</button>
+						</form>
+					</header>
+				<!-- Thumbnail -->
+					<section id="thumbnails">
+						<article>
+							<a class="thumbnail" href="{{imagedata.voter_photo.url}}"><img src="{{imagedata.voter_photo.url}}" alt="" /></a>
+							<h2>Passport Size Photo</h2>
+						</article>
+						<article>
+							<a class="thumbnail" href="{{imagedata.govtID_card.url}}"><img src="{{imagedata.govtID_card.url}}" alt="" /></a>
+							<h2>Government ID</h2>
+						</article>
+						<article>
+							<a class="thumbnail" href="{{imagedata.address_proof.url}}"><img src="{{imagedata.address_proof.url}}" alt="" /></a>
+							<h2>Address Proof</h2>
+						</article>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="copyright">
+							<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a>.</li>
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{%static "evoterform/js/jquery.min.js"%}"></script>
+			<script src="{%static "evoterform/js/browser.min.js"%}"></script>
+			<script src="{%static "evoterform/js/breakpoints.min.js"%}"></script>
+			<script src="{%static "evoterform/js/main.js"%}"></script>
+
+	</body>
+</html>

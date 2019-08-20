@@ -1,0 +1,16 @@
+<header id="header">
+  <h1 id="logo"><a href="{%url 'main-view' %}">EVID</a></h1>
+  <nav id="nav">
+    <ul>
+      <li><a href="{%url 'api-profile-view' %}">Profile</a></li>
+      <li>
+        <a href="">Settings</a>
+        <ul>
+          <li><a href="{% url "add-event" %}">Add Event</a></li>
+          <li><a href="{% url "add-user-view" %}">Add User</a></li>
+        </ul>
+      </li>
+      <li><a href="{%url "logout-view"%}" class="button primary">Logout</a></li>
+    </ul>
+  </nav>
+</header>

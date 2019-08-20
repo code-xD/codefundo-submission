@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+	{% block content %}
+	{% load static %}
+	<body class="is-preload landing">
+		<div id="page-wrapper">
+			{% include "menu-main.html"%}
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>EVID Portal</h2>
+							<p>Welcome To E-Voter ID Portal<br />
+							Make your Voter ID Card, Go Digital<br/>
+							A Codefundo++ Submission</p>
+						</header>
+						<span class="image" ><img src="{%static "images/EVID-Logo.jpg" %}" style ="transform: scale(1.3);" alt="" /></span>
+					</div>
+				</section>
+
+
+		{%endblock content%}

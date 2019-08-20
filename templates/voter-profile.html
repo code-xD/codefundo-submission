@@ -1,0 +1,33 @@
+{% extends "base.html"%}
+	{% block content %}
+	<body class="is-preload landing">
+		<div id="page-wrapper">
+			{% include "profile-menu.html"%}
+			<!-- Banner -->
+				<div class="voter-login">
+				<section style="padding-top:6em" class="container">
+					<h2>Profile</h2>
+					<h4>Welcome {{request.user.username}} ,</h4>
+					<div class="table-wrapper">
+						<table>
+							<thead>
+								<tr>
+									<th>Event</th>
+									<th>Corporation</th>
+									<th>Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								{%for event in events%}
+								<tr>
+									<td>{{event.event.event_name}}</td>
+									<td>{{event.event.api.user.first_name}}</td>
+									<td>{{event.date}}</td>
+								</tr>
+								{%endfor%}
+							</tbody>
+						</table>
+					</div>
+				</section>
+			</div>
+{%endblock content%}

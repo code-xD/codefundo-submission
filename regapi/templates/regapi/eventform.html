@@ -1,0 +1,29 @@
+{% extends "base.html"%}
+	{% block content %}
+	<body class="is-preload landing">
+		<div id="page-wrapper">
+			{% include "corp-profile-menu.html"%}
+    <div class="container" style="padding-top:5em;">
+    <div class="col-md-8">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="content-section">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          {{form}}
+        </fieldset>
+        <div class="form-group">
+          <button class="button primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+  {% endblock content %}

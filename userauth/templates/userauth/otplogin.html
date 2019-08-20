@@ -1,0 +1,23 @@
+<div id="otp">
+      <form class="form-horizontal" name="OTPForm"  method="post">
+      {% csrf_token %}
+      {% if next %}
+          <input type="hidden" name="next" value="{{ next }}" />
+      {% endif %}
+      <div class="control-group">
+          <label class="control-label" for="Line 1">Line 1</label>
+          <div class="controls">
+              <input type="text" id="l1" name="Line 1"  placeholder="Line 1">
+          </div>
+          <label class="control-label" for="Line 1">Line 2</label>
+          <div class="controls">
+              <input type="text" id="l2" name="Line 2"  placeholder="Line 2">
+          </div>
+      </div>
+      <div class="control-group">
+          <div class="controls">
+              <button type="submit" class="btn">Verify</button>
+          </div>
+      </div>
+      </form>
+  </div>

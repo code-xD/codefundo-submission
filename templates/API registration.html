@@ -1,0 +1,46 @@
+{% extends "base.html"%}
+	{% block content %}
+	<body class="is-preload landing">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+			{% include "menu-main.html"%}
+				<!-- Banner -->
+				<section id ="banner" >
+					<div class="content">
+					<h2 style="text-align:center">Corporate Registration</h2>
+						<form method="POST">
+							{% csrf_token %}
+							<fieldset class="form-group">
+								<h3>Register API to use our EVID</h3>
+								<div id="div_id_username" class="form-group"> <label for="id_username" class="col-form-label  requiredField">
+                	<input type="text" name="username" placeholder="Company User ID" maxlength="150" autofocus class="textinput textInput form-control" required id="id_username">
+								</div>
+								<div id="div_id_first_name" class="form-group">
+								 	<input type="text" name="first_name" placeholder="Company Name" maxlength="30" class="textinput textInput form-control" id="id_first_name">
+							 	</div>
+							 	<div id="div_id_password1" class="form-group">
+								 	<input type="password" name="password1" placeholder="Password" class="textinput textInput form-control" required id="id_password1">
+							 	</div>
+							 	<div id="div_id_password2" class="form-group">
+								  <input type="password" name="password2" placeholder="Confirm Password" class="textinput textInput form-control" required id="id_password2">
+								</div>
+								<div id="div_id_api_name" class="form-group">
+									<input type="text" name="api_name" maxlength="255" placeholder="API Name" class="textinput textInput form-control" required id="id_api_name">
+								</div>
+								<div id="div_id_callback_url" class="form-group">
+									<input type="text" name="callback_url" maxlength="500" placeholder="Callback URL" class="textinput textInput form-control" id="id_callback_url">
+								</div>
+								<div id="div_id_redirect_url" class="form-group">
+									<input type="text" name="redirect_url" maxlength="500" placeholder="Redirect URL" class="textinput textInput form-control" id="id_redirect_url">
+								</div>
+							 </fieldset>
+							 <div class="form-group">
+								 <button class="button primary small" type="submit">Submit</button>
+							 </div>
+						 </form>
+					 </div>
+				 </section>
+
+
+	{%endblock content%}

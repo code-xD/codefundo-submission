@@ -1,0 +1,22 @@
+<header id="header">
+  <h1 id="logo"><a href="{% url "main-view" %}">EVID</a></h1>
+  <nav id="nav">
+    <ul>
+      <li><a href="{% url "mainform-view" %}">EVID Form</a></li>
+      <li>
+        <a href="">Corporate</a>
+        <ul>
+          <li><a href="{% url "corporate-login-view" %}">Login</a></li>
+          <li><a href="{% url "corporate-create-view" %}">Register</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="">Staff</a>
+        <ul>
+          <li><a href="{% url "admin-login-view" %}">Login</a></li>
+        </ul>
+      </li>
+      <li><a href="{% url "main-login-view" %}" class="button primary">Voter Login</a></li>
+    </ul>
+  </nav>
+</header>

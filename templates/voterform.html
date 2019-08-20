@@ -1,0 +1,82 @@
+{% extends "base.html"%}
+	{% block content %}
+	<body class="is-preload landing">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+			{% include "menu-main.html"%}
+			<!-- Banner -->
+					<section id ="banner">
+						<div class="content">
+						<h2 style="text-align:center">E-Voter Form</h2>
+							<form method="POST" enctype="multipart/form-data">
+								{% csrf_token %}
+								<fieldset class="form-group">
+									{% if messages %}
+						        {% for message in messages %}
+						          <h3>
+						            Note: {{ message }}
+						          </h3>
+						        {% endfor %}
+						      {% endif %}
+          				<h3>Register For E-Voter Identification Card</h3>
+										<div class="gtr-5">
+											 <div id="div_id_voter_name" class="form-group">
+												  <input type="text" name="voter_name" placeholder="Name(As Per Aadhar Card)" maxlength="200" class="textinput textInput form-control" required id="id_voter_name">
+											 </div>
+											 <div id="div_id_age" class="form-group">
+													<input type="text" name="age" placeholder="Age" class="textinput textInput form-control" required id="id_age">
+											 </div>
+											 <div id="div_id_gender" class="form-group">
+												 <select name="gender" class="select form-control" id="id_gender">
+													 <option value=1>Male</option>
+													 <option value=2>Female</option>
+													 <option value=3>Others</option>
+												 </select>
+											</div>
+											 <div id="div_id_aadhar_no" class="form-group">
+												 <input type="text" name="aadhar_no" placeholder="Aadhar Number" class="textinput textInput form-control" required id="id_aadhar_no">
+											 </div>
+											 <div id="div_id_aLine1" class="form-group">
+												 <input type="text" name="aLine1" placeholder="Address(Line 1)" maxlength="500" class="textinput textInput form-control" required id="id_aLine1">
+											 </div>
+											 <div id="div_id_aLine2" class="form-group">
+												 <input type="text" name="aLine2" placeholder="Address(Line 2)" maxlength="500" class="textinput textInput form-control" required id="id_aLine2">
+											 </div>
+											 <div id="div_id_s_code" class="form-group">
+												 <input type="text" name="s_code" placeholder="State" class="textinput textInput form-control" required id="id_s_code">
+											 </div>
+											 <div id="div_id_c_code" class="form-group">
+												 <input type="text" name="c_code" placeholder="City" class="textinput textInput form-control" required id="id_c_code">
+											 </div>
+											 <div id="div_id_d_code" class="form-group">
+												 <input type="text" name="d_code" placeholder="District" class="textinput textInput form-control" required id="id_d_code">
+											 </div>
+											 <div id="div_id_pin" class="form-group">
+												<input type="text" name="pin" placeholder="Pincode" class="textinput textInput form-control" required id="id_pin">
+											 </div>
+											 <div id="div_id_email" class="form-group">
+												 <input type="email" name="email" placeholder="E-mail" maxlength="254" class="emailinput form-control" required id="id_email">
+											 </div>
+											 <div id="div_id_voter_photo" class="form-group">
+												 <label for="id_voter_photo"  style="text-align:left" class="col-form-label requiredField">Passport Photo<span class="asteriskField">*</span> </label>
+												 <input type="file" name="voter_photo" accept="image/*" class="clearablefileinput" required id="id_voter_photo">
+											 </div>
+											 <div id="div_id_govtID_card" class="form-group">
+												 <label for="id_govtID_card" style="text-align:left" class="col-form-label requiredField">Government ID Card<span class="asteriskField">*</span> </label>
+												 <input type="file" name="govtID_card" accept="image/*" class="clearablefileinput" required id="id_govtID_card">
+											 </div>
+											 <div id="div_id_address_proof" class="form-group">
+												 <label for="id_address_proof" style="text-align:left" class="col-form-label requiredField">Address Proof<span class="asteriskField">*</span> </label>
+												 <input type="file" name="address_proof" accept="image/*" class="clearablefileinput" required id="id_address_proof">
+											 </div>
+										</div>
+								</fieldset>
+								<div class="form-group">
+									<button class="button primary small" style="align-conent:center" type="submit">Submit</button>
+								</div>
+							</form>
+						</div>
+					</section>
+
+		{%endblock content%}

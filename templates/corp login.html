@@ -1,0 +1,31 @@
+{% extends "base.html"%}
+	{% block content %}
+	<body class="is-preload landing">
+		<div id="page-wrapper">
+			{% include "menu-main.html"%}
+				<!-- Banner -->
+				<section id ="banner" class ="corp-login">
+					<div class="content">
+					<h2 style="text-align:center">Corporate Login</h2>
+						<form method="POST" enctype="application/x-www-form-urlencoded" name="LoginForm">
+							{% csrf_token %}
+							{% if next %}
+									<input type="hidden" name="next" value="{{ next }}" />
+							{% endif %}
+								<h3>Welcome, Corporations.</h3>
+									<div class="gtr-5">
+										 <div id="div_id_voter_name" class="form-group">
+												<input type="text" name="username" placeholder="Username" maxlength="200" class="textinput textInput form-control" required id="username">
+										 </div>
+										 <div id="div_id_age" class="form-group">
+												<input type="password" name="password" placeholder="Password" class="textinput textInput form-control" required id="password">
+										 </div>
+									 </div>
+							 <div class="form-group">
+								 <button class="button primary small" style="background-color:#042c88;" type="submit">Login</button>
+							 </div>
+						 </form>
+					 </div>
+				 </section>
+
+				 {% endblock content %}

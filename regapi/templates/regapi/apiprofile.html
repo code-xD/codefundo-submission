@@ -1,0 +1,10 @@
+<h1> Welcome {{user.first_name}} {{user.last_name}}</h1>
+<h3> Name- {{profile.api_name}}</h3>
+<h3> ID- {{profile.api_id}} </h3>
+<h3> Key- {{profile.api_key}} </h3>
+<h3> Secret- {{profile.api_secret}} </h3>
+{% for event in events%}
+<h2>{{event.event_name}} {{event.event_id}}</h2>
+{%endfor%}
+<a href="{% url 'add-event'%}">Add Event</a>
+<a href="{% url 'add-user-view'%}">Add Users</a>
