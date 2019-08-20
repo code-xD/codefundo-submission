@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!&*ss52#5v_9kwlzda5xo)*(jasofoukse9dnpmzmqn-^vn1$e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'evoterid.azurewebsites.net']
+ALLOWED_HOSTS = ['localhost', 'evoterid.azurewebsites.net', 'evoterid.herokuapp.com']
 
 
 # Application definition
