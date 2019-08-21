@@ -12,7 +12,7 @@ class AccountDetail(models.Model):
     address_proof = models.ImageField(upload_to='Address_Proof/')
     voter_photo = models.ImageField(upload_to='Passport_Photo/')
     connectionHash = models.CharField(max_length=255, null=True, blank=True)
-    voterID = models.IntegerField(null=True, blank=True)
+    voterID = models.BigIntegerField(null=True, blank=True)
 
     def __str__(self):
         return "Cache "+str(self.aadhar_no)

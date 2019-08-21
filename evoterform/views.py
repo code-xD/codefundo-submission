@@ -93,57 +93,57 @@ def EVoterFormView(request):
 
 
 def VerificationView(request, connectionhash):
-    # try:
-    required_data = AccountDetail.objects.get(connectionHash=connectionhash)
-    tasks = Task.objects.all().filter(connectionHash=connectionhash)
-    if len(tasks) != 1:
-        raise Exception
-    task = tasks[0]
-    if task.worker.user != request.user:
-        return redirect('admin-login-view')
-    aadhar_no = required_data.aadhar_no
-    print(required_data.aadhar_no)
-    evoterdata = CacheVoterData.objects.get(aadhar_no=aadhar_no)
-    if request.method == 'POST':
-        if "verified" in request.POST:
-            required_data.voterID = int(''.join([str(random.randint(1, 9)) for i in range(12)]))
-            password = genrandomstring(15)
-            user = User(username=required_data.voterID)
-            user.save()
-            user.set_password(password)
-            user.save()
-            send_mail(
-                "Verification Successful",
-                f"""
-                Your details have been successfully verfied.
-                Below are your logincredentials-
-                username-{user.username}
-                password-{password}
-                Regards,
-                MainAdmin
-                (EVoterAuth)
-                """,
-                'admin@evoter.com', [required_data.email]
-            )
-            # print("verified")
-            required_data.connectionHash = ''
-            required_data.save()
-        elif "failed" in request.POST:
-            send_mail(
-                "Verification Failed",
-                """
-                Your Verification has been unsuccessful.
-                The admin did not approve the documents.
-                Regards,
-                MainAdmin
-                (EVoterAuth)
-                """,
-                'admin@evoter.com', [required_data.email]
-            )
-            required_data.delete()
-        task.delete()
-        evoterdata.delete()
-        return redirect('admin-profile-view')
-    return render(request, 'evoterform/verification.html', {'voterdata': evoterdata, 'imagedata': required_data})
-    # except Exception:
-    #     return HttpResponseNotFound()
+    try:
+        required_data = AccountDetail.objects.get(connectionHash=connectionhash)
+        tasks = Task.objects.all().filter(connectionHash=connectionhash)
+        if len(tasks) != 1:
+            raise Exception
+        task = tasks[0]
+        if task.worker.user != request.user:
+            return redirect('admin-login-view')
+        aadhar_no = required_data.aadhar_no
+        print(required_data.aadhar_no)
+        evoterdata = CacheVoterData.objects.get(aadhar_no=aadhar_no)
+        if request.method == 'POST':
+            if "verified" in request.POST:
+                required_data.voterID = int(''.join([str(random.randint(1, 9)) for i in range(12)]))
+                password = genrandomstring(15)
+                user = User(username=required_data.voterID)
+                user.save()
+                user.set_password(password)
+                user.save()
+                send_mail(
+                    "Verification Successful",
+                    f"""
+                    Your details have been successfully verfied.
+                    Below are your logincredentials-
+                    username-{user.username}
+                    password-{password}
+                    Regards,
+                    MainAdmin
+                    (EVoterAuth)
+                    """,
+                    'admin@evoter.com', [required_data.email]
+                )
+                # print("verified")
+                required_data.connectionHash = ''
+                required_data.save()
+            elif "failed" in request.POST:
+                send_mail(
+                    "Verification Failed",
+                    """
+                    Your Verification has been unsuccessful.
+                    The admin did not approve the documents.
+                    Regards,
+                    MainAdmin
+                    (EVoterAuth)
+                    """,
+                    'admin@evoter.com', [required_data.email]
+                )
+                required_data.delete()
+            task.delete()
+            evoterdata.delete()
+            return redirect('admin-profile-view')
+        return render(request, 'evoterform/verification.html', {'voterdata': evoterdata, 'imagedata': required_data})
+    except Exception:
+        return HttpResponseNotFound()
