@@ -9,7 +9,7 @@ class API(models.Model):
     api_name = models.CharField(max_length=255)
     api_key = models.PositiveIntegerField(primary_key=True, unique=True)
     api_secret = models.CharField(max_length=255)
-    api_id = models.PositiveIntegerField(unique=True)
+    api_id = models.BigIntegerField(unique=True)
     callback_url = models.CharField(max_length=500, validators=[
                                     URLValidator()], null=True, blank=True)
     redirect_url = models.CharField(max_length=500, validators=[
@@ -22,7 +22,7 @@ class API(models.Model):
 
 class Event(models.Model):
     event_name = models.CharField(max_length=255)
-    event_id = models.PositiveIntegerField(primary_key=True, unique=True)
+    event_id = models.BigIntegerField(primary_key=True, unique=True)
     api = models.ForeignKey(API, on_delete=models.CASCADE)
     private_key = models.CharField(max_length=500)
 
