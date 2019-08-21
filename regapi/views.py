@@ -206,8 +206,9 @@ def AddUserView(request):
     api = API.objects.get(user=request.user)
     if request.method == 'POST':
         form = AuserForm(api, request.POST, request.FILES)
+        print(form)
         ff = form.save()
-        event = Event.objects.filter(id=ff.event.id)
+        event = ff.event
         with open(settings.MEDIA_ROOT+'/'+str(ff.name_list), 'r') as file:
             while file:
                 voter_id = file.readline()
