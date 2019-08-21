@@ -185,53 +185,53 @@ def CorporateCreateView(request):
 
 
 def AddEventView(request):
-    # try:
-    api = API.objects.get(user=request.user)
-    if request.method == 'POST':
-        form = EventForm(request.POST)
-        event = form.save(commit=False)
-        event.event_id = genrandomint(15)
-        event.private_key = genrandomstring(32)
-        event.api = api
-        event.save()
-        return redirect('api-profile-view')
-    form = EventForm()
-    return render(request, 'regapi/eventform.html', {'form': form})
-    # except Exception:
-    #     return redirect('corporate-login-view')
-
-
-def AddUserView(request):
     try:
         api = API.objects.get(user=request.user)
         if request.method == 'POST':
-            form = AuserForm(api, request.POST, request.FILES)
-            ff = form.save()
-            event = ff.event
-            with open(settings.MEDIA_ROOT+'/'+str(ff.name_list), 'r') as file:
-                while file:
-                    voter_id = file.readline()
-                    voter_id = voter_id.strip('\n')
-                    voter_id = voter_id.strip(' ')
-                    voter_id = voter_id.strip('\t')
-                    if voter_id == '':
-                        break
-                    print('voter_id', voter_id)
-                    try:
-                        ac = AccountDetail.objects.get(voterID=voter_id)
-                        au = Allowed_user.objects.filter(
-                            event=event, user=User.objects.get(username=voter_id))
-                        for u in au:
-                            print(u)
-                        if len(au) == 0:
-                            au = Allowed_user(
-                                event=event, user=User.objects.get(username=voter_id))
-                            au.save()
-                    except Exception:
-                        messages.error(request, 'File not properly configured.')
-                        return render(request, 'regapi/eventform.html', {'form': form})
+            form = EventForm(request.POST)
+            event = form.save(commit=False)
+            event.event_id = genrandomint(15)
+            event.private_key = genrandomstring(32)
+            event.api = api
+            event.save()
             return redirect('api-profile-view')
-        file_field = AuserForm(api)
-        return render(request, 'regapi/eventform.html', {'form': file_field})
+        form = EventForm()
+        return render(request, 'regapi/eventform.html', {'form': form})
     except Exception:
         return redirect('corporate-login-view')
+
+
+def AddUserView(request):
+    # try:
+    api = API.objects.get(user=request.user)
+    if request.method == 'POST':
+        form = AuserForm(api, request.POST, request.FILES)
+        ff = form.save()
+        event = ff.event
+        with open(settings.MEDIA_ROOT+'/'+str(ff.name_list), 'r') as file:
+            while file:
+                voter_id = file.readline()
+                voter_id = voter_id.strip('\n')
+                voter_id = voter_id.strip(' ')
+                voter_id = voter_id.strip('\t')
+                if voter_id == '':
+                    break
+                print('voter_id', voter_id)
+                try:
+                    ac = AccountDetail.objects.get(voterID=voter_id)
+                    au = Allowed_user.objects.filter(
+                        event=event, user=User.objects.get(username=voter_id))
+                    for u in au:
+                        print(u)
+                    if len(au) == 0:
+                        au = Allowed_user(
+                            event=event, user=User.objects.get(username=voter_id))
+                        au.save()
+                except Exception:
+                    messages.error(request, 'File not properly configured.')
+                    return render(request, 'regapi/eventform.html', {'form': form})
+        return redirect('api-profile-view')
+    file_field = AuserForm(api)
+    return render(request, 'regapi/eventform.html', {'form': file_field})
+    # except Exception:
+    #     return redirect('corporate-login-view')
