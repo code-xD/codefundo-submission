@@ -123,7 +123,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-SITE_URL = 'http://evoterid.azurewebsites.net'
+SITE_URL = 'http://evoterid.herokuapp.com'
 SENDGRID_API_KEY = "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"
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False
