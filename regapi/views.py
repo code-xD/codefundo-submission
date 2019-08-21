@@ -206,7 +206,7 @@ def AddUserView(request):
     api = API.objects.get(user=request.user)
     if request.method == 'POST':
         form = AuserForm(api, request.POST, request.FILES)
-        ff = form.save(commit=False)
+        ff = form.save()
         event = ff.event
         with open(settings.MEDIA_ROOT+'/'+str(ff.name_list), 'r') as file:
             while file:
