@@ -13,7 +13,7 @@ djangorestframework==3.10.2
 future==0.17.1
 gunicorn==19.9.0
 idna==2.8
-Pillow==6.1.0
+Pillow==9.0.1
 pprint==0.1
 psycopg2==2.8.3
 pycparser==2.19
